@@ -15,6 +15,12 @@ if (lunch_check_in.find(':') != -1):
     hour, minute = map(int, lunch_check_out.split(':'))
     lunch_check_out = dt.timedelta(hours=hour, minutes=minute)
     time_in += (lunch_check_out - lunch_check_in)
-full_day = dt.timedelta(hours=8, minutes=0)
+print("How long do you intend to be checked in for? Use HH:MM. Don't have a colon to default to 8 hours")
+day_length = input()
+if (day_length.find(':') != -1):
+    hour, minute = map(int, day_length.split(':'))
+    full_day = dt.timedelta(hours=hour, minutes=minute)
+else:
+    full_day = dt.timedelta(hours=8, minutes=0)
 time_out = full_day + time_in
 print("Check out at:", time_out)
